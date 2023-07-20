@@ -1,0 +1,40 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+  - rubocop-capybara
+
+AllCops:
+  NewCops: disable
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'config/initializers/rack_attack.rb'
+    - 'config/initializers/devise.rb'
+    - 'lib/tasks/auto_annotate_models.rake'
+    - 'vendor/**/*'
+    - 'spec/rails_helper.rb'
+    - 'node_modules/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*
+    - spec/**/*
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+
+Lint/MissingSuper:
+  Exclude:
+    - 'app/components/*'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
