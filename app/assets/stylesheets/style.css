@@ -1,0 +1,65 @@
+/* 
+1. Navbar
+2. Homepage
+3. Devise Forms
+*/
+
+
+/* 1. Navbar */
+.navbar-expand-lg .navbar-collapse {
+    flex-direction: row-reverse;
+}
+
+.navbar.navbar-expand-lg.navbar-light.bg-light {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+/* 2. Homepage */
+.splash {
+    padding-top: 100px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper {
+    max-width: 992px;
+    padding: 10px;
+}
+
+.splash p {
+    padding-top: 10px;
+}
+
+
+/* 3. Devise Forms */
+.devise-forms-wrapper {
+    margin: auto;
+    width: auto;
+    min-width: 200px;
+    max-width: 400px;
+    padding-top: 30px;
+}
+
+.devise-forms-wrapper .field {
+    margin-top: 20px;
+}
+
+.devise-forms-wrapper .field .form-label {
+    margin-bottom: 0px;
+}
+
+.devise-forms-wrapper .actions {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.danger-zone-wrapper {
+    padding: 20px;
+    border: 2px solid #dc3545;
+    border-radius: 10px;
+    margin-top: 20px;
+}
