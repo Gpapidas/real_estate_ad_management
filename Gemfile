@@ -44,6 +44,10 @@ gem "bootsnap", require: false
 
 gem 'dotenv', '~> 2.8', '>= 2.8.1'
 
+gem 'annotate', '~> 3.2'
+
+gem 'devise', '~> 4.9', '>= 4.9.2'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
