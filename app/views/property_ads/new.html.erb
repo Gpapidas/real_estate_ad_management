@@ -1,0 +1,28 @@
+<div class="REA-creation-forms-wrapper">
+  <h4>New Real Estate Ad</h4>
+  <%= form_with(model: @property_ad, url: property_ads_path, data: { controller: 'property-ad' }) do |form| %>
+    <div class="field">
+      <%= form.label :title, class: 'form-label' %>
+      <%= form.text_field :title, required: true, maxlength: 155, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= form.label :property_type, 'Type', class: 'form-label' %>
+      <%= form.select :property_type, options_for_select(PropertyAd.property_types.values, 'Rent'), {}, class: 'form-select' %>
+    </div>
+    <div class="field">
+      <%= form.label :property_ad_allocation_id, 'Area', class: 'form-label' %>
+      <%= form.number_field :property_ad_allocation_id, required: true, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= form.label :price, 'Price in Euros', class: 'form-label' %>
+      <%= form.number_field :price, required: true, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= form.label :extra_description, class: 'form-label' %>
+      <%= form.text_area :extra_description, class: 'form-control' %>
+    </div>
+    <div>
+      <%= form.submit "Submit", class: 'btn btn-primary w-100 mt-3' %>
+    </div>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_21_090924) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_21_120739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_090924) do
 
   create_table "property_ads", force: :cascade do |t|
     t.string "title", null: false
-    t.string "type", null: false
+    t.string "property_type", null: false
     t.integer "property_ad_allocation_id", null: false
     t.integer "user_id", null: false
     t.float "price", null: false

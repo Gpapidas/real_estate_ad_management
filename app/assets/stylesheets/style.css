@@ -2,6 +2,7 @@
 1. Navbar
 2. Homepage
 3. Devise Forms
+4. REA Pages
 */
 
 
@@ -62,4 +63,56 @@
     border: 2px solid #dc3545;
     border-radius: 10px;
     margin-top: 20px;
+}
+
+
+/* 4. REA Pages */
+.rea-index-wrapper {
+    padding-top: 30px;
+}
+
+.card-wrapper {
+    margin-bottom: 10px;
+}
+
+.card.card-show-page {
+    border: none;
+    max-width: 700px;
+    margin: auto;
+    padding: 30px;
+    background-color: transparent;
+}
+
+.card.card-show-page .card-header {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card.card-show-page .card-show-actions {
+    display: flex;
+}
+
+.card.card-show-page .edit-action, .card.card-show-page .delete-action {
+    margin-left: 5px;
+}
+
+.card.card-show-page .card-body {
+    padding: 0px;
+}
+
+.REA-creation-forms-wrapper {
+    margin: auto;
+    width: auto;
+    min-width: 200px;
+    max-width: 400px;
+    padding-top: 30px;
+}
+.REA-creation-forms-wrapper .field {
+    margin-top: 20px;
+}
+
+.REA-creation-forms-wrapper .field .form-label {
+    margin-bottom: 0px;
 }
