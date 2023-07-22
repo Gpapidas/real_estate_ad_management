@@ -15,6 +15,8 @@
 class PropertyAd < ApplicationRecord
   enum property_type: { rent: 'Rent', buy: 'Buy', exchange: 'Exchange', donation: 'Donation' }
   validates :title, presence: true, length: { maximum: 155 }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :price, format: { with: /\A\d+(\.\d{1,2})?\z/, message: "should have up to two decimals" }
 
   belongs_to :property_ad_location
   belongs_to :user

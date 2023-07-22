@@ -27,6 +27,17 @@ class PropertyAdsController < ApplicationController
     create_property_ad_with_location(property_ad_params, property_ad_location_params)
   end
 
+  def edit
+    @property_ad = PropertyAd.find(params[:id])
+  end
+
+  def update
+    @property_ad = PropertyAd.find(params[:id])
+    property_ad_params = property_params
+    property_ad_location_params = property_ad_params.delete(:property_ad_location)
+    update_property_ad_with_location(property_ad_params, property_ad_location_params)
+  end
+
   def destroy
     @property_ad = if current_user.admin?
                      PropertyAd.find_by(id: params[:id])
@@ -51,6 +62,20 @@ class PropertyAdsController < ApplicationController
       redirect_to(property_ads_path, notice: 'Creation Successful! Congratulations!')
     rescue ActiveRecord::RecordInvalid
       render :new
+    end
+  end
+
+  def update_property_ad_with_location(property_ad_params, property_ad_location_params)
+    ActiveRecord::Base.transaction do
+      property_ad_location = PropertyAdLocation.create_or_update(property_ad_location_params)
+
+      @property_ad.update(property_ad_params.merge(user_id: current_user.id, property_ad_location_id: property_ad_location.id))
+
+      raise ActiveRecord::RecordInvalid if @property_ad.errors.any?
+
+      redirect_to(property_ad_path(@property_ad.id), notice: 'Property updated successfully!')
+    rescue ActiveRecord::RecordInvalid
+      render :edit
     end
   end
 

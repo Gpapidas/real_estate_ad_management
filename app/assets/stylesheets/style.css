@@ -7,14 +7,23 @@
 
 
 /* 1. Navbar */
-.navbar-expand-lg .navbar-collapse {
+.navbar-expand-md .navbar-collapse {
     flex-direction: row-reverse;
 }
 
-.navbar.navbar-expand-lg.navbar-light.bg-light {
+.navbar.navbar-expand-md.navbar-light.bg-light {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+a.navbar-brand {
+    font-family: cursive;
+    font-size: 28px;
+}
+
+ul.navbar-nav {
+    font-family: cursive;
+    font-size: 18px;
+}
 
 /* 2. Homepage */
 .splash {

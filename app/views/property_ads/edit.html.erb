@@ -1,6 +1,6 @@
 <div class="REA-creation-forms-wrapper">
-  <h4>New Property</h4>
-  <%= form_with(model: @property_ad, url: property_ads_path, data: { turbo: false }) do |form| %>
+  <h4>Edit Property</h4>
+  <%= form_with(model: @property_ad, url: property_ad_path(@property_ad), method: :patch, data: { turbo: false }) do |form| %>
     <% if @property_ad.errors.any? %>
       <div class="alert alert-danger" role="alert">
         <h5><%= pluralize(@property_ad.errors.count, "error") %> prohibited the form submission:</h5>
@@ -24,16 +24,18 @@
       <div data-controller="area-select">
         <%= label_tag :property_ad_location_info, 'Area', class: 'form-label' %>
         <%= select_tag :property_ad_location_info,
-          {},
+          options_for_select(
+            ["#{@property_ad.property_ad_location.area_main_text}, #{@property_ad.property_ad_location.area_secondary_text}"]
+          ),
           data: { 
             area_select_target: "selectField"
           },
           required: true,
           class: 'form-control'
         %>
-        <%= form.hidden_field 'property_ad_location[place_id]', data: { area_select_target: "placeIdField" } %>
-        <%= form.hidden_field 'property_ad_location[area_main_text]', data: { area_select_target: "areaMainTextField" } %>
-        <%= form.hidden_field 'property_ad_location[area_secondary_text]', data: { area_select_target: "areaSecondaryTextField" } %>
+        <%= form.hidden_field 'property_ad_location[place_id]', value: @property_ad.property_ad_location.place_id, data: { area_select_target: "placeIdField" } %>
+        <%= form.hidden_field 'property_ad_location[area_main_text]', value: @property_ad.property_ad_location.area_main_text, data: { area_select_target: "areaMainTextField" } %>
+        <%= form.hidden_field 'property_ad_location[area_secondary_text]', value: @property_ad.property_ad_location.area_secondary_text, data: { area_select_target: "areaSecondaryTextField" } %>
       </div>
     </div>
     <div class="field">

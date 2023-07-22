@@ -3,7 +3,7 @@
     <div class="card-header">
       <h5 class="card-title"><%= @property_ad.title %></h5>
       <div class="card-show-actions">
-        <%= link_to raw("<i class='bi bi-pencil-square'></i>"), '#', class: 'btn btn-warning w-100 edit-action' %>
+        <%= link_to raw("<i class='bi bi-pencil-square'></i>"), edit_property_ad_path(@property_ad.id), class: 'btn btn-warning w-100 edit-action' %>
         <%= button_to raw("<i class='bi bi-trash'></i>"), property_ad_path(@property_ad.id), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger w-100 delete-action' %>
       </div>
     </div>

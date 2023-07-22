@@ -55,8 +55,10 @@ export default class extends Controller {
 
     const selectedOption = this.selectize[0].selectize.options[value];
     this.placeIdFieldTarget.value = value;
-    this.areaMainTextFieldTarget.value = selectedOption.mainText;
-    this.areaSecondaryTextFieldTarget.value = selectedOption.secondaryText;
+    if (selectedOption) {
+      this.areaMainTextFieldTarget.value = selectedOption.mainText;
+      this.areaSecondaryTextFieldTarget.value = selectedOption.secondaryText;
+    }
 
     this.selectize[0].selectize.clearOptions();
   }
