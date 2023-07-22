@@ -1,8 +1,19 @@
 <div class="REA-creation-forms-wrapper">
   <h4>New Real Estate Ad</h4>
-  <%= form_with(model: @property_ad, url: property_ads_path, data: { controller: 'property-ad' }) do |form| %>
+  <%= form_with(model: @property_ad, url: property_ads_path, data: { turbo: false }) do |form| %>
+    <% if @property_ad.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <h5><%= pluralize(@property_ad.errors.count, "error") %> prohibited the form submission:</h5>
+        <ul>
+          <% @property_ad.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="field">
       <%= form.label :title, class: 'form-label' %>
+      <small class="side-label">(up to 155 characters)</small>
       <%= form.text_field :title, required: true, maxlength: 155, class: 'form-control' %>
     </div>
     <div class="field">
@@ -10,8 +21,20 @@
       <%= form.select :property_type, options_for_select(PropertyAd.property_types.values, 'Rent'), {}, class: 'form-select' %>
     </div>
     <div class="field">
-      <%= form.label :property_ad_allocation_id, 'Area', class: 'form-label' %>
-      <%= form.number_field :property_ad_allocation_id, required: true, class: 'form-control' %>
+      <div data-controller="area-select">
+        <%= label_tag :property_ad_allocation_info, 'Area', class: 'form-label' %>
+        <%= select_tag :property_ad_allocation_info,
+          {},
+          data: { 
+            area_select_target: "selectField"
+          },
+          required: true,
+          class: 'form-control'
+        %>
+        <%= form.hidden_field 'property_ad_allocation[place_id]', data: { area_select_target: "placeIdField" } %>
+        <%= form.hidden_field 'property_ad_allocation[area_main_text]', data: { area_select_target: "areaMainTextField" } %>
+        <%= form.hidden_field 'property_ad_allocation[area_secondary_text]', data: { area_select_target: "areaSecondaryTextField" } %>
+      </div>
     </div>
     <div class="field">
       <%= form.label :price, 'Price in Euros', class: 'form-label' %>

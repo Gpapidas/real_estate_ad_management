@@ -48,8 +48,12 @@ gem 'annotate', '~> 3.2'
 
 gem 'devise', '~> 4.9', '>= 4.9.2'
 
+gem 'httparty'
+
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
+
+gem 'jsbundling-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -63,6 +67,8 @@ group :development, :test do
   gem 'rubocop-rspec', '~> 2.22'
   gem 'bundler-audit', '~> 0.9.0'
   gem 'brakeman'
+  gem 'foreman'
+  gem 'byebug'
 end
 
 group :development do

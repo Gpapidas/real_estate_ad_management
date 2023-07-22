@@ -17,14 +17,27 @@ class PropertyAdsController < ApplicationController
     end
   end
 
-  def create
-    @ad = PropertyAd.new(property_ad_params)
-    @ad.user_id = current_user.id
+  def new
+    @property_ad = PropertyAd.new
+  end
 
-    if @ad.save
-      redirect_to(property_ads_path, notice: 'Congratulations! You created a Tip!')
-    else
-      redirect_to(property_ads_path, notice: 'There was a problem with the creation! Please try again later!')
+  def create
+    property_ad_params = property_params
+    property_ad_allocation_params = property_ad_params.delete(:property_ad_allocation)
+
+    ActiveRecord::Base.transaction do
+      property_ad_allocation = PropertyAdAllocation.create_or_update(property_ad_allocation_params)
+
+      @property_ad = PropertyAd.new(property_ad_params)
+      @property_ad.user_id = current_user.id
+      @property_ad.property_ad_allocation_id = property_ad_allocation.id
+      @property_ad.save
+
+      raise ActiveRecord::RecordInvalid if @property_ad.errors.any?
+
+      redirect_to(property_ads_path, notice: 'Creation Successful! Congratulations!')
+    rescue ActiveRecord::RecordInvalid
+      render :new
     end
   end
 
@@ -40,7 +53,17 @@ class PropertyAdsController < ApplicationController
 
   private
 
-  def property_ad_params
-    params.permit(:title, :property_type, :property_ad_allocation_id, :price, :extra_description)
+  def property_params
+    params.require('property_ad').permit(
+      :title,
+      :property_type,
+      :price,
+      :extra_description,
+      property_ad_allocation: [
+        :place_id,
+        :area_main_text,
+        :area_secondary_text,
+      ]
+    )
   end
 end

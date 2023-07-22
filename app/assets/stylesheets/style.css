@@ -116,3 +116,8 @@
 .REA-creation-forms-wrapper .field .form-label {
     margin-bottom: 0px;
 }
+
+.side-label {
+    font-style: italic;
+    color: gray;
+}
