@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :property_ads
 
-  get '/property_ad_allocations/area_autocomplete_options', to: 'property_ad_allocations#area_autocomplete_options', format: :json, only: [:area_autocomplete_options]
+  get '/property_ad_locations/area_autocomplete_options', to: 'property_ad_locations#area_autocomplete_options', format: :json, only: [:area_autocomplete_options]
 
   # Defines the root path route ("/")
   root to: 'pages#home'

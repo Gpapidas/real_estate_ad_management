@@ -22,8 +22,8 @@
     </div>
     <div class="field">
       <div data-controller="area-select">
-        <%= label_tag :property_ad_allocation_info, 'Area', class: 'form-label' %>
-        <%= select_tag :property_ad_allocation_info,
+        <%= label_tag :property_ad_location_info, 'Area', class: 'form-label' %>
+        <%= select_tag :property_ad_location_info,
           {},
           data: { 
             area_select_target: "selectField"
@@ -31,9 +31,9 @@
           required: true,
           class: 'form-control'
         %>
-        <%= form.hidden_field 'property_ad_allocation[place_id]', data: { area_select_target: "placeIdField" } %>
-        <%= form.hidden_field 'property_ad_allocation[area_main_text]', data: { area_select_target: "areaMainTextField" } %>
-        <%= form.hidden_field 'property_ad_allocation[area_secondary_text]', data: { area_select_target: "areaSecondaryTextField" } %>
+        <%= form.hidden_field 'property_ad_location[place_id]', data: { area_select_target: "placeIdField" } %>
+        <%= form.hidden_field 'property_ad_location[area_main_text]', data: { area_select_target: "areaMainTextField" } %>
+        <%= form.hidden_field 'property_ad_location[area_secondary_text]', data: { area_select_target: "areaSecondaryTextField" } %>
       </div>
     </div>
     <div class="field">

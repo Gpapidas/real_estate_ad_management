@@ -9,7 +9,7 @@
     </div>
     <ul>
       <li><i class="bi bi-house"></i> <%= @property_ad.property_type %></li>
-      <li><i class="bi bi-geo-alt"></i> <%= @property_ad.property_ad_allocation.area_main_text %>, <%= @property_ad.property_ad_allocation.area_secondary_text %></li>
+      <li><i class="bi bi-geo-alt"></i> <%= @property_ad.property_ad_location.area_main_text %>, <%= @property_ad.property_ad_location.area_secondary_text %></li>
       <li><i class="bi bi-tag"></i> <%= @property_ad.price %><i class="bi bi-currency-euro"></i></li>
       <li><i class="bi bi-arrow-clockwise"></i> <%= @property_ad.updated_at.strftime("%B %e, %Y") %></li>
       <% if current_user.admin? %>

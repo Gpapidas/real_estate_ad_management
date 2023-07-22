@@ -1,4 +1,4 @@
-class PropertyAdAllocationsController < ApplicationController
+class PropertyAdLocationsController < ApplicationController
   def area_autocomplete_options
     input = params[:input]
 

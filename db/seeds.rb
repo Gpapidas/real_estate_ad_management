@@ -9,14 +9,14 @@ user = User.create(
     }
 )
 
-# Create PropertyAdAllocations
-property_ad_allocation1 = PropertyAdAllocation.create(
+# Create PropertyAdLocations
+property_ad_location1 = PropertyAdLocation.create(
     place_id: "123456",
     area_main_text: "Main Area 1",
     area_secondary_text: "Secondary Area 1"
   )
   
-  property_ad_allocation2 = PropertyAdAllocation.create(
+  property_ad_location2 = PropertyAdLocation.create(
     place_id: "789012",
     area_main_text: "Main Area 2",
     area_secondary_text: "Secondary Area 2"
@@ -26,7 +26,7 @@ property_ad_allocation1 = PropertyAdAllocation.create(
   PropertyAd.create(
     title: "Luxury Villa",
     property_type: "Rent",
-    property_ad_allocation_id: property_ad_allocation1.id,
+    property_ad_location_id: property_ad_location1.id,
     user_id: user.id,
     price: 1000000.00,
     extra_description: "This is a beautiful luxury villa with stunning views."
@@ -35,7 +35,7 @@ property_ad_allocation1 = PropertyAdAllocation.create(
   PropertyAd.create(
     title: "Cozy Apartment",
     property_type: "Rent",
-    property_ad_allocation_id: property_ad_allocation2.id,
+    property_ad_location_id: property_ad_location2.id,
     user_id: user.id,
     price: 300000.00,
     extra_description: "A comfortable apartment in a prime location."
@@ -44,7 +44,7 @@ property_ad_allocation1 = PropertyAdAllocation.create(
   PropertyAd.create(
     title: "Beach House",
     property_type: "Rent",
-    property_ad_allocation_id: property_ad_allocation1.id,
+    property_ad_location_id: property_ad_location1.id,
     user_id: user.id,
     price: 800000.00,
     extra_description: "A charming beachfront property with direct access to the beach."

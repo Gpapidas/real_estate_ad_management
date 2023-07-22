@@ -10,23 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_22_131136) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_22_152240) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "property_ad_allocations", force: :cascade do |t|
+  create_table "property_ad_locations", force: :cascade do |t|
     t.string "place_id", null: false
     t.string "area_main_text", null: false
     t.string "area_secondary_text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["place_id"], name: "index_property_ad_allocations_on_place_id", unique: true
+    t.index ["place_id"], name: "index_property_ad_locations_on_place_id", unique: true
   end
 
   create_table "property_ads", force: :cascade do |t|
     t.string "title", null: false
     t.string "property_type", null: false
-    t.integer "property_ad_allocation_id", null: false
+    t.integer "property_ad_location_id", null: false
     t.integer "user_id", null: false
     t.float "price", null: false
     t.string "extra_description"

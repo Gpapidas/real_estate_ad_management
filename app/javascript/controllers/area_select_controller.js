@@ -25,7 +25,7 @@ export default class extends Controller {
 
   loadOptions(query, callback) {
      if (query.length >= 3) {
-       fetch(`/property_ad_allocations/area_autocomplete_options/?input=${encodeURIComponent(query)}`)
+       fetch(`/property_ad_locations/area_autocomplete_options/?input=${encodeURIComponent(query)}`)
          .then(response => response.json())
          .then(json => {
           console.log(json)

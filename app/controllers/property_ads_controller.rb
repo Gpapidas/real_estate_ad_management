@@ -23,14 +23,14 @@ class PropertyAdsController < ApplicationController
 
   def create
     property_ad_params = property_params
-    property_ad_allocation_params = property_ad_params.delete(:property_ad_allocation)
+    property_ad_location_params = property_ad_params.delete(:property_ad_location)
 
     ActiveRecord::Base.transaction do
-      property_ad_allocation = PropertyAdAllocation.create_or_update(property_ad_allocation_params)
+      property_ad_location = PropertyAdLocation.create_or_update(property_ad_location_params)
 
       @property_ad = PropertyAd.new(property_ad_params)
       @property_ad.user_id = current_user.id
-      @property_ad.property_ad_allocation_id = property_ad_allocation.id
+      @property_ad.property_ad_location_id = property_ad_location.id
       @property_ad.save
 
       raise ActiveRecord::RecordInvalid if @property_ad.errors.any?
@@ -59,7 +59,7 @@ class PropertyAdsController < ApplicationController
       :property_type,
       :price,
       :extra_description,
-      property_ad_allocation: [
+      property_ad_location: [
         :place_id,
         :area_main_text,
         :area_secondary_text,
