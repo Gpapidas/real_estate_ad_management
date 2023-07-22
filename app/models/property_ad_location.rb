@@ -20,10 +20,10 @@ class PropertyAdLocation < ApplicationRecord
     place_id = params[:place_id]
 
     property_ad_location = find_by(place_id: place_id)
-    
+
     if property_ad_location.present?
-      # When you call update on a record, ActiveRecord will first check if any attributes have been modified. 
-      # If there are no changes to the attributes, it will skip the update operation, resulting in no query 
+      # When you call update on a record, ActiveRecord will first check if any attributes have been modified.
+      # If there are no changes to the attributes, it will skip the update operation, resulting in no query
       # being executed on the database.
       property_ad_location.update!(params)
     else

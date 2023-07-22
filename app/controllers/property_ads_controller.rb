@@ -24,21 +24,7 @@ class PropertyAdsController < ApplicationController
   def create
     property_ad_params = property_params
     property_ad_location_params = property_ad_params.delete(:property_ad_location)
-
-    ActiveRecord::Base.transaction do
-      property_ad_location = PropertyAdLocation.create_or_update(property_ad_location_params)
-
-      @property_ad = PropertyAd.new(property_ad_params)
-      @property_ad.user_id = current_user.id
-      @property_ad.property_ad_location_id = property_ad_location.id
-      @property_ad.save
-
-      raise ActiveRecord::RecordInvalid if @property_ad.errors.any?
-
-      redirect_to(property_ads_path, notice: 'Creation Successful! Congratulations!')
-    rescue ActiveRecord::RecordInvalid
-      render :new
-    end
+    create_property_ad_with_location(property_ad_params, property_ad_location_params)
   end
 
   def destroy
@@ -53,6 +39,21 @@ class PropertyAdsController < ApplicationController
 
   private
 
+  def create_property_ad_with_location(property_ad_params, property_ad_location_params)
+    ActiveRecord::Base.transaction do
+      property_ad_location = PropertyAdLocation.create_or_update(property_ad_location_params)
+
+      @property_ad = PropertyAd.new(property_ad_params.merge(user_id: current_user.id, property_ad_location_id: property_ad_location.id))
+      @property_ad.save
+
+      raise ActiveRecord::RecordInvalid if @property_ad.errors.any?
+
+      redirect_to(property_ads_path, notice: 'Creation Successful! Congratulations!')
+    rescue ActiveRecord::RecordInvalid
+      render :new
+    end
+  end
+
   def property_params
     params.require('property_ad').permit(
       :title,
@@ -62,7 +63,7 @@ class PropertyAdsController < ApplicationController
       property_ad_location: [
         :place_id,
         :area_main_text,
-        :area_secondary_text,
+        :area_secondary_text
       ]
     )
   end
