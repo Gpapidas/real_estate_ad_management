@@ -3,7 +3,7 @@ class PropertyAdsController < ApplicationController
 
   def index
     @ads = if current_user.admin?
-             property_ads.all
+             PropertyAd.all
            else
              current_user.property_ads
            end
@@ -28,11 +28,19 @@ class PropertyAdsController < ApplicationController
   end
 
   def edit
-    @property_ad = PropertyAd.find(params[:id])
+    if current_user.admin?
+      @property_ad = PropertyAd.find_by(id: params[:id]) or not_found
+    else
+      @property_ad = PropertyAd.find_by(user: current_user, id: params[:id]) or not_found
+    end
   end
 
   def update
-    @property_ad = PropertyAd.find(params[:id])
+    if current_user.admin?
+      @property_ad = PropertyAd.find_by(id: params[:id]) or not_found
+    else
+      @property_ad = PropertyAd.find_by(user: current_user, id: params[:id]) or not_found
+    end
     property_ad_params = property_params
     property_ad_location_params = property_ad_params.delete(:property_ad_location)
     update_property_ad_with_location(property_ad_params, property_ad_location_params)

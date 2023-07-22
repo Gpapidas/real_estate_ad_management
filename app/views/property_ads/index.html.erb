@@ -1,24 +1,41 @@
 <div class="rea-index-wrapper container">
-  <div class="row">
-    <% @ads.each_with_index do |ad, index| %>
-      <div class="card-wrapper col-12 col-sm-6 col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"><%= ad.title %></h5>
-            <ul>
-              <li><i class="bi bi-house"></i> <%= ad.property_type %></li>
-              <li><i class="bi bi-geo-alt"></i> <%= ad.property_ad_location.area_main_text %>, <%= ad.property_ad_location.area_secondary_text %></li>
-              <li><i class="bi bi-tag"></i> <%= ad.price %><i class="bi bi-currency-euro"></i></li>
-              <li><i class="bi bi-arrow-clockwise"></i> <%= ad.updated_at.strftime("%B %e, %Y") %></li>
-              <% if current_user.admin? %>
-                <li><i class="bi bi-person"></i> <%= ad.user.email %></li>
-              <% end %>
-            </ul>
-            <p class="card-text"><%= ad.extra_description %></p>
-            <%= link_to "Check it out!", property_ad_path(ad.id), class: 'btn btn-primary' %>
+  <% if @ads.count == 0 %>
+    <div class="row home">
+      <div class="col-12 col-md-6 img-home-wrapper">
+        <%= image_tag "ream-img-home.png", class: 'img-home' %>
+      </div>
+      <div class="col-12 col-md-6 splash">
+        <div class="content-wrapper">
+          <div class="intro">
+            <h3>It seems like you have no properties,</h3>
           </div>
+          <div class="sub">
+            <p>you can starting creating immediately!</p>
+          </div>
+          <%= link_to "Just Click Here!", new_property_ad_path, type: 'button', class: 'btn btn-primary' %>
         </div>
       </div>
     <% end %>
+    <div class="row">
+      <% @ads.each_with_index do |ad, index| %>
+        <div class="card-wrapper col-12 col-sm-6 col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= ad.title %></h5>
+              <ul>
+                <li><i class="bi bi-house"></i> <%= ad.property_type %></li>
+                <li><i class="bi bi-geo-alt"></i> <%= ad.property_ad_location.area_main_text %>, <%= ad.property_ad_location.area_secondary_text %></li>
+                <li><i class="bi bi-tag"></i> <%= ad.price %><i class="bi bi-currency-euro"></i></li>
+                <li><i class="bi bi-arrow-clockwise"></i> <%= ad.updated_at.strftime("%B %e, %Y") %></li>
+                <% if current_user.admin? %>
+                  <li><i class="bi bi-person"></i> <%= ad.user.email %></li>
+                <% end %>
+              </ul>
+              <p class="card-text"><%= ad.extra_description %></p>
+              <%= link_to "Check it out!", property_ad_path(ad.id), class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
