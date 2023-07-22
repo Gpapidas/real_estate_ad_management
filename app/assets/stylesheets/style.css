@@ -26,8 +26,24 @@ ul.navbar-nav {
 }
 
 /* 2. Homepage */
-.splash {
+.row.home {
     padding-top: 100px;
+    align-items: center;
+}
+
+.img-home-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-home {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+}
+
+.splash {
     height: 100%;
     width: 100%;
     display: flex;
