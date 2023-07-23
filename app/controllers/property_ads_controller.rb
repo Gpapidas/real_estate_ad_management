@@ -3,9 +3,9 @@ class PropertyAdsController < ApplicationController
 
   def index
     @ads = if current_user.admin?
-             PropertyAd.all
+             PropertyAd.all.includes([:property_ad_location])
            else
-             current_user.property_ads
+             current_user.property_ads.includes([:property_ad_location])
            end
   end
 
