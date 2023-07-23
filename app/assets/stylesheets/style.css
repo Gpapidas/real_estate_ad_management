@@ -152,3 +152,18 @@ ul.navbar-nav {
     font-style: italic;
     color: gray;
 }
+
+.property-ad-image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.property-ad-image {
+    max-height: 300px;
+    max-width: 100%;
+    width: max-content;
+    margin: auto;
+}

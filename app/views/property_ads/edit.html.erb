@@ -43,12 +43,21 @@
       <%= form.number_field :price, required: true, step: '0.01', min: '0', class: 'form-control' %>
     </div>
     <div class="field">
+      <%= form.label :image, "Image" %><br />
+      <% unless @property_ad.image.url.nil? %>
+        <div class="property-ad-image-wrapper">
+          <%= image_tag @property_ad.image.url, class: 'property-ad-image' %>
+        </div>
+      <% end %>
+      <%= form.file_field :image, autofocus: true, class: 'form-control' %>
+    </div>
+    <div class="field">
       <%= form.label :levels, 'Levels', class: 'form-label' %>
       <%= form.number_field :levels, step: '1', min: '1', max: '163', class: 'form-control' %>
     </div>
     <div class="field">
       <%= form.label :bathrooms, 'Bathrooms', class: 'form-label' %>
-      <%= form.number_field :bathrooms, required: true, step: '1', min: '1', max: '200', class: 'form-control' %>
+      <%= form.number_field :bathrooms, step: '1', min: '1', max: '200', class: 'form-control' %>
     </div>
     <div class="field">
       <%= form.label :extra_description, class: 'form-label' %>

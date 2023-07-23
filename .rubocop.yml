@@ -6,6 +6,7 @@ require:
 
 AllCops:
   NewCops: disable
+  SuggestExtensions: false
   Exclude:
     - 'db/**/*'
     - 'script/**/*'

@@ -20,6 +20,9 @@
       <% @ads.each_with_index do |ad, index| %>
         <div class="card-wrapper col-12 col-sm-6 col-md-4">
           <div class="card">
+            <% unless ad.image.url.nil? %>
+              <%= image_tag ad.image.url, class: 'property-ad-image' %>
+            <% end %>
             <div class="card-body">
               <h4 class="card-title"><%= ad.title %></h4>
               <ul class="property-properties-list">
