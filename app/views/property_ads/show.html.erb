@@ -1,17 +1,23 @@
 <div class="card card-show-page">
   <div class="card-body">
     <div class="card-header">
-      <h5 class="card-title"><%= @property_ad.title %></h5>
+      <h4 class="card-title"><%= @property_ad.title %></h4>
       <div class="card-show-actions">
         <%= link_to raw("<i class='bi bi-pencil-square'></i>"), edit_property_ad_path(@property_ad.id), class: 'btn btn-warning w-100 edit-action' %>
         <%= button_to raw("<i class='bi bi-trash'></i>"), property_ad_path(@property_ad.id), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger w-100 delete-action' %>
       </div>
     </div>
-    <ul>
-      <li><i class="bi bi-house"></i> <%= @property_ad.property_type %></li>
-      <li><i class="bi bi-geo-alt"></i> <%= @property_ad.property_ad_location.area_main_text %>, <%= @property_ad.property_ad_location.area_secondary_text %></li>
-      <li><i class="bi bi-tag"></i> <%= @property_ad.price %><i class="bi bi-currency-euro"></i></li>
-      <li><i class="bi bi-arrow-clockwise"></i> <%= @property_ad.updated_at.strftime("%B %e, %Y") %></li>
+    <ul class="property-properties-list">
+      <li><b>Type:</b> <%= @property_ad.property_type %></li>
+      <li><b>Area:</b> <%= @property_ad.property_ad_location.area_main_text %>, <%= @property_ad.property_ad_location.area_secondary_text %></li>
+      <li><b>Price:</b> <%= @property_ad.price %><i class="bi bi-currency-euro"></i></li>
+      <li><b>Updated:</b> <%= @property_ad.updated_at.strftime("%B %e, %Y") %></li>
+      <% unless @property_ad.levels.nil? %>
+        <li><b>Levels:</b> <%= @property_ad.levels %></li>
+      <% end %>
+      <% unless @property_ad.bathrooms.nil? %>
+        <li><b>Bathrooms:</b> <%= @property_ad.bathrooms %></li>
+      <% end %>
       <% if current_user.admin? %>
         <li><i class="bi bi-person"></i> <%= @property_ad.user.email %></li>
       <% end %>

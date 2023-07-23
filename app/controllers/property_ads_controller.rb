@@ -93,6 +93,8 @@ class PropertyAdsController < ApplicationController
       :property_type,
       :price,
       :extra_description,
+      :levels,
+      :bathrooms,
       property_ad_location: [
         :place_id,
         :area_main_text,

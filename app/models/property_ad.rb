@@ -3,7 +3,9 @@
 # Table name: property_ads
 #
 #  id                      :bigint           not null, primary key
+#  bathrooms               :integer
 #  extra_description       :string
+#  levels                  :integer
 #  price                   :float            not null
 #  property_type           :string           not null
 #  title                   :string           not null
@@ -17,6 +19,8 @@ class PropertyAd < ApplicationRecord
   validates :title, presence: true, length: { maximum: 155 }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :price, format: { with: /\A\d+(\.\d{1,2})?\z/, message: "should have up to two decimals" }
+  validates :levels, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 163, allow_nil: true }
+  validates :bathrooms, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 200, allow_nil: true }
 
   belongs_to :property_ad_location
   belongs_to :user

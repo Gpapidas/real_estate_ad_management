@@ -72,6 +72,7 @@ PropertyAd.create(
   property_ad_location_id: property_ad_location1.id,
   user_id: second_user.id,
   price: 800000.00,
+  levels: 12,
   extra_description: "A charming beachfront property with direct access to the beach."
 )
 

@@ -100,6 +100,11 @@ ul.navbar-nav {
     margin-bottom: 10px;
 }
 
+.property-properties-list {
+    list-style: none;
+    padding: 0;
+}
+
 .card.card-show-page {
     border: none;
     max-width: 700px;
@@ -133,6 +138,7 @@ ul.navbar-nav {
     min-width: 200px;
     max-width: 400px;
     padding-top: 30px;
+    padding-bottom: 30px;
 }
 .REA-creation-forms-wrapper .field {
     margin-top: 20px;
