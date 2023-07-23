@@ -154,8 +154,25 @@ GEM
     diff-lcs (1.5.0)
     dotenv (2.8.1)
     erubi (1.12.0)
+    excon (0.100.0)
     ffi (1.15.5)
+    fog-aws (3.19.0)
+      fog-core (~> 2.1)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+    fog-core (2.3.0)
+      builder
+      excon (~> 0.71)
+      formatador (>= 0.2, < 2.0)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.4)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
     foreman (0.87.2)
+    formatador (1.1.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     httparty (0.21.0)
@@ -197,6 +214,7 @@ GEM
     mini_mime (1.1.2)
     minitest (5.18.1)
     msgpack (1.7.2)
+    multi_json (1.15.0)
     multi_test (1.1.0)
     multi_xml (0.6.0)
     net-imap (0.3.6)
@@ -383,6 +401,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9, >= 4.9.2)
   dotenv (~> 2.8, >= 2.8.1)
+  fog-aws
   foreman
   httparty
   importmap-rails
