@@ -87,4 +87,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
+  gem 'cucumber-rails'
+  gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
 end
