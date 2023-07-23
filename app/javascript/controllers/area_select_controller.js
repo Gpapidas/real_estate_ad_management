@@ -28,8 +28,10 @@ export default class extends Controller {
        fetch(`/property_ad_locations/area_autocomplete_options/?input=${encodeURIComponent(query)}`)
          .then(response => response.json())
          .then(json => {
-          console.log(json)
           this.selectize[0].selectize.clearOptions();
+          if (json.error) {
+            throw new Error(json.error);
+          }
           json.forEach(area => {
             this.selectize[0].selectize.addOption(
               { 
@@ -44,7 +46,8 @@ export default class extends Controller {
           callback(json)
          })
          .catch(error => {
-           console.error("Error fetching options:", error);
+          console.error("Error fetching options:", error);
+          alert(error);
          });
      }
   }
