@@ -44,6 +44,7 @@ jobs:
           bundle exec rails db:create
           bundle exec rails db:migrate
           bundle exec rails db:seed
+          RAILS_ENV=test bundle exec rails db:seed
           bundle exec brakeman
           bundle exec bundle-audit check --update
           bundle exec rubocop
