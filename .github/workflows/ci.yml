@@ -1,0 +1,51 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      DATABASE_URL: postgres://postgres:secret@db:5432/postgres
+      TEST_DATABASE_HOST: db
+      AWS_ACCESS_KEY_ID: ''
+      AWS_SECRET_ACCESS_KEY: ''
+      AWS_REGION: ''
+      S3_BUCKET_NAME: ''
+    services: 
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: secret
+        ports: ['5432:5432']
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Ruby 3.0.3
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0.3'
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - run: npm install
+      - name: Build and run tests
+        env: 
+          DATABASE_URL: postgres://postgres:@localhost:5432/real_estate_ad_management_test
+          RAILS_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: secret
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+          bundle exec brakeman
+          bundle exec bundle-audit check --update
+          bundle exec rubocop
+          bundle exec cucumber -s

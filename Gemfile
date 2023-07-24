@@ -42,7 +42,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem 'dotenv', '~> 2.8', '>= 2.8.1'
+gem 'dotenv', '~> 2.8', '>= 2.8.1', groups: %i[development test]
 
 gem 'annotate', '~> 3.2'
 
@@ -92,6 +92,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
 end
