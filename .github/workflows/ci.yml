@@ -5,9 +5,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      DATABASE_HOST: db
-      DATABASE_USER_NAME: postgres
-      DATABASE_PASSWORD: secret
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      DATABASE_URL: postgres://postgres:secret@db:5432/postgres
+      TEST_DATABASE_HOST: db
       AWS_ACCESS_KEY_ID: ''
       AWS_SECRET_ACCESS_KEY: ''
       AWS_REGION: ''
@@ -43,8 +45,6 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rails db:create
           bundle exec rails db:migrate
-          bundle exec rails db:seed
-          RAILS_ENV=test bundle exec rails db:seed
           bundle exec brakeman
           bundle exec bundle-audit check --update
           bundle exec rubocop
