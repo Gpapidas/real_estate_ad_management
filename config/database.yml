@@ -58,6 +58,9 @@ development:
 test:
   <<: *default
   database: real_estate_ad_management_test
+  host: <%= ENV.fetch("DATABASE_HOST") %>
+  username: <%= ENV.fetch("DATABASE_USER_NAME") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
