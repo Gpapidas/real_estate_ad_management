@@ -17,6 +17,7 @@ test:
 
 production:
   <<: *default
-  database: real_estate_ad_management_production
-  username: real_estate_ad_management
-  password: <%= ENV["REAL_ESTATE_AD_MANAGEMENT_DATABASE_PASSWORD"] %>
+  host: <%= ENV.fetch("PRODUCTION_DATABASE_HOST") %>
+  username: <%= ENV.fetch("PRODUCTION_DATABASE_USER_NAME") %>
+  password: <%= ENV.fetch("PRODUCTION_PASSWORD") %>
+  url: <%= ENV['DATABASE_URL'] %>
