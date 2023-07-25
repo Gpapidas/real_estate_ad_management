@@ -12,10 +12,10 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
-  config.hosts << 'https://vast-earth-24288-c34e0ec7b1f0.herokuapp.com/'
+  config.hosts << 'vast-earth-24288-c34e0ec7b1f0.herokuapp.com'
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
