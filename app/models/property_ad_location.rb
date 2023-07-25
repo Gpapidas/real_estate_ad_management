@@ -19,7 +19,7 @@ class PropertyAdLocation < ApplicationRecord
   def self.create_or_update(params)
     place_id = params[:place_id]
 
-    property_ad_location = find_by(place_id: place_id)
+    property_ad_location = find_by(place_id:)
 
     if property_ad_location.present?
       # When you call update on a record, ActiveRecord will first check if any attributes have been modified.

@@ -1,4 +1,4 @@
-FROM ruby:3.0.3
+FROM ruby:3.1.3
 RUN apt-get update -qq \
 && apt-get install -y curl build-essential libpq-dev \
  nodejs postgresql-client &&\
