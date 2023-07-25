@@ -4,6 +4,23 @@
 
 ### * Rails version: 7.0.6
 
+### * IMPORTANT!
+
+    Merging code into main branch will automatically deploy the changes
+    to our production. Please make sure to check for github CI before merging
+    to ensure that everything works fine!
+
+    Also please check out the 'Before you commit' section, described below.
+
+### * Production
+
+    A production instance of this application can be found in
+    the following link
+    https://vast-earth-24288-c34e0ec7b1f0.herokuapp.com/
+
+    Make sure to log in with one of the users described in 
+    db/seeds.rb
+
 ### * How to run locally
 
     1. Clone this repository
@@ -46,12 +63,13 @@
 
 ### * Before you commit
 
-    When you push or open a PR, github CI will run some tests to verify that everything is in order.
-    While this is not configured to prevent merges, even if these tests fail, it provides an automated
-    check so that the contributor can consult.
+    When you push or open a PR, github CI will run some tests to 
+    verify that everything is in order.
+    While this is not configured to prevent merges, even if these tests fail, 
+    it provides an automated check so that the contributor can consult.
 
-    Please before submitting a PR make sure that the following commands run without errors to ensure that
-    github CI passes.
+    Please before submitting a PR make sure that the following commands run 
+    without errors to ensure that github CI passes.
 
     1. `bundle install`
     2. `bundle exec brakeman`
@@ -61,7 +79,8 @@
 
 ##### Run the tests
 
-    We are using cucumber to run end-to-end tests, in order to make sure everything runs correctly.
+    We are using cucumber to run end-to-end tests, 
+    in order to make sure everything runs correctly.
     Please run the following commands to run the tests for the first time.
     After creating and migrating the test db once, you do not have to do it again.
 
@@ -71,7 +90,8 @@
 
 ##### Brakeman
 
-    Brakeman is a static analysis tool which checks Ruby on Rails applications for security vulnerabilities. 
+    Brakeman is a static analysis tool which checks 
+    Ruby on Rails applications for security vulnerabilities. 
     For more details please visit https://github.com/presidentbeef/brakeman
 
 ##### Bundler Audit
@@ -99,7 +119,8 @@
 
 ###### Annotate
 
-    Annotate is being used to add a comment summarizing the current schema to the top or bottom of each of 
+    Annotate is being used to add a comment summarizing 
+    the current schema to the top or bottom of each of 
     our ActiveRecord models. 
     See more here: https://github.com/ctran/annotate_models
 
@@ -110,17 +131,20 @@
 
 ###### Httparty
 
-    Httparty is being used to make the needed API call to get the Area data we need for our form.
+    Httparty is being used to make the needed API call to get the 
+    Area data we need for our form.
     See more here: https://github.com/jnunemaker/httparty
 
 ###### jsbundling-rails
 
-    JavaScript Bundling for Rails provides installers to get you going with the bundler of your choice in a new Rails application.
+    JavaScript Bundling for Rails provides installers to get 
+    you going with the bundler of your choice in a new Rails application.
     See more here: https://github.com/rails/jsbundling-rails
 
 ###### Carrierwave / fog-aws
 
-    These two gems are being used together in order to enable image uploading with AWS s3 storage.
+    These two gems are being used together in order to 
+    enable image uploading with AWS s3 storage.
     See more here (carrierwave): https://github.com/carrierwaveuploader/carrierwave
     See more here (fog-aws): https://github.com/fog/fog-aws
 
