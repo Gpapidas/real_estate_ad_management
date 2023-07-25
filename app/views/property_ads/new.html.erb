@@ -1,5 +1,6 @@
 <div class="REA-creation-forms-wrapper">
   <h4>New Property</h4>
+  <small class="side-label">fields with * are required</small>
   <%= form_with(model: @property_ad, url: property_ads_path, data: { turbo: false }) do |form| %>
     <% if @property_ad.errors.any? %>
       <div class="alert alert-danger" role="alert">
@@ -12,17 +13,17 @@
       </div>
     <% end %>
     <div class="field">
-      <%= form.label :title, class: 'form-label' %>
+      <%= form.label :title, 'Title *', class: 'form-label' %>
       <small class="side-label">(up to 155 characters)</small>
       <%= form.text_field :title, required: true, maxlength: 155, class: 'form-control' %>
     </div>
     <div class="field">
-      <%= form.label :property_type, 'Type', class: 'form-label' %>
+      <%= form.label :property_type, 'Type *', class: 'form-label' %>
       <%= form.select :property_type, options_for_select(PropertyAd.property_types.values, 'Rent'), {}, class: 'form-select' %>
     </div>
     <div class="field">
       <div data-controller="area-select">
-        <%= label_tag :property_ad_location_info, 'Area', class: 'form-label' %>
+        <%= label_tag :property_ad_location_info, 'Area *', class: 'form-label' %>
         <%= select_tag :property_ad_location_info,
           {},
           data: { 
@@ -37,7 +38,7 @@
       </div>
     </div>
     <div class="field">
-      <%= form.label :price, 'Price in Euros', class: 'form-label' %>
+      <%= form.label :price, 'Price in Euros *', class: 'form-label' %>
       <%= form.number_field :price, required: true, step: '0.01', min: '0', class: 'form-control' %>
     </div>
     <div class="field">

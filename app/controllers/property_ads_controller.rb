@@ -53,7 +53,7 @@ class PropertyAdsController < ApplicationController
                      PropertyAd.find_by(user: current_user, id: params[:id])
                    end
     @property_ad.destroy
-    redirect_to(property_ads_path, notice: 'REA deleted successfully!')
+    redirect_to(property_ads_path, notice: 'Property deleted successfully!')
   end
 
   private
