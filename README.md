@@ -4,17 +4,25 @@
 
 ### * Rails version: 7.0.6
 
-### * Configuration
-
-    Can easily run on a localhost environment with Docker
-
 ### * How to run locally
 
     1. Clone this repository
     2. Rename .env.example to .env
     3. Run docker-compose build
     4. Run docker-compose up
-    5. Website should be ready at http://0.0.0.0:3000
+    5. Run docker exec -it real_estate_ad_management_web_1 /bin/bash
+    6. Run rails db:migrate
+    7. Run rails db:seed to initialize the data
+    8. Website should be ready at http://0.0.0.0:3000
+
+### * Seeded data
+
+    In the seeded data (described into db/seeds.rb) you will find Users,
+    PropertyAds and PropertyAdLocations. You can log in with one of the 4
+    users described in the file.
+
+    Admins will have access to all properties, while regular users will have only
+    to theirs.
 
 ### * Before you commit
 

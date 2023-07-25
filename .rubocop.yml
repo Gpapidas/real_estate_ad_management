@@ -17,6 +17,7 @@ AllCops:
     - 'vendor/**/*'
     - 'spec/rails_helper.rb'
     - 'node_modules/**/*'
+    - 'features/support/env.rb'
 
 Metrics/BlockLength:
   Exclude:
