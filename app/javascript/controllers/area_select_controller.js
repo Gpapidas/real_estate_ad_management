@@ -6,10 +6,6 @@ export default class extends Controller {
   static targets = ["selectField", "placeIdField", "areaMainTextField", "areaSecondaryTextField"];
 
   connect() {
-    const oldSelectizeControl = $(this.element).siblings('.selectize-control');
-        if (oldSelectizeControl.length) {
-            $(oldSelectizeControl[0]).selectize()[0].selectize.destroy();
-        }
     this.selectize = $(this.selectFieldTarget).selectize({
       create: false,
       load: this.loadOptions.bind(this),
