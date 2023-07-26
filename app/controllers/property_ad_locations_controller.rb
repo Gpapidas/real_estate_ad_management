@@ -1,5 +1,10 @@
 class PropertyAdLocationsController < ApplicationController
   def area_autocomplete_options
+    # Receives an HTTP request with an input argument.
+    # Returns list of available locations.
+    # These locations are taken through an HTTP request to the locations API.
+    # Results from this API are being stored to cache, in order to avoid
+    # unneeded requests.
     input = params[:input]
     encoded_input = URI.encode_www_form_component(input)
     begin

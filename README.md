@@ -4,6 +4,20 @@
 
 ### * Rails version: 7.0.6
 
+### * The project
+
+    Real estate ad management is an application used for creating and managing property ads.
+    A user can perform the whole CRUD operation for their property ads.
+    Creation and editing happens by using a custom form.
+    Area selection happens by consuming a third-party API which provides
+    results for available areas, according to user's input.
+    Code and documentation for this functionality can be found in the following
+    files:
+
+    - app/views/property_ads/new.html.erb
+    - app/javascript/controllers/area_select_controller.js
+    - app/controllers/property_ad_locations_controller.rb
+
 ### * IMPORTANT!
 
     Merging code into main branch will automatically deploy the changes
@@ -42,16 +56,18 @@
 
     `docker exec -it real_estate_ad_management_web_1 /bin/bash`
 
-    In order to connect to the container, and after that you can run 
-    either
+    `yarn`
+
+    In order to connect to the container and install packages, 
+    and after that you can run either
 
     `yarn build`, to apply the changes
 
     or
 
     `yarn build --watch`, to continuously watch for changes and apply them
-    while developing the app  
-
+    while developing the app
+ 
 ### * Seeded data
 
     In the seeded data (described into db/seeds.rb) you will find Users,
